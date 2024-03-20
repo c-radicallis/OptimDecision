@@ -72,9 +72,28 @@ class VrptwAcoFigure:
             plt.pause(1)
 
     def _draw_line(self, path):
-        # Draw the path based on the indices in the path
+        # vector of colors
+        # Get Tableau Colors 10 colormap
+        cmap = plt.cm.get_cmap('tab10')
+
+        # Generate list of 50 distinct and saturated colors in hexadecimal format
+        hex_colors = [cmap(i)[:3] for i in range(50)]
+
+        # number of paths -> number of colors
+        color_counter = 0
+
+        # 根据path中index进行路径的绘制
         for i in range(1, len(path)):
+
+            # update color counter
+            if i-1 > 0 and path[i-1] == 0:
+                color_counter += 1
+            else:
+                pass
+
+            # Draw the path based on the indices in the path
             x_list = [self.nodes[path[i - 1]].x, self.nodes[path[i]].x]
             y_list = [self.nodes[path[i - 1]].y, self.nodes[path[i]].y]
-            self.figure_ax.plot(x_list, y_list, color=self._line_color, linewidth=1.5, label='line')
+            self.figure_ax.plot(x_list, y_list, color=hex_colors[color_counter], linewidth=1.5, label='line')
             plt.pause(0.2)
+            # print(path[i])
