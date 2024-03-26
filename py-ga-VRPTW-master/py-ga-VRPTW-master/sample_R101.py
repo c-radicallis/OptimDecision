@@ -48,6 +48,8 @@ color_vector = [cmap(i)[:3] for i in range(50)]
 
 
 plt.figure(figsize=[6, 6])
+plt.axis([0,70,0,70])
+plt.gca().set_aspect('equal')
 
 for i in range(len(list_1)):
     list_1[i] = [0] + list_1[i] + [0]
@@ -80,6 +82,9 @@ for j in range(len(list_1)):
         y_point_1 = data[customer_i_1]['coordinates']['y']
         y_point_2 = data[customer_i]['coordinates']['y']
         plt.arrow(x_point_1 , y_point_1, x_point_2 - x_point_1, y_point_2-y_point_1, head_width=1, head_length=1, color=color_vector[j], length_includes_head=True)
+        plt.plot(x_point_1, y_point_1, ".", color=color_vector[j], markersize=10)
+
+plt.plot(data["depart"]['x'], data["depart"]['y'], "o", color="red", markersize=10)
 
 plt.grid(True)
 plt.xlabel('X coordinate')
