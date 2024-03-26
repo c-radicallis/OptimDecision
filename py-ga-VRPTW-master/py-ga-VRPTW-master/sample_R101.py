@@ -6,6 +6,7 @@ import random
 from gavrptw.core import run_gavrptw
 import matplotlib.pyplot as plt
 import json
+import os
 
 random.seed(64)
 
@@ -87,4 +88,21 @@ plt.plot(data["depart"]['coordinates']['x'], data["depart"]['coordinates']['y'],
 plt.grid(True)
 plt.xlabel('X coordinate')
 plt.ylabel('Y coordinate')
+
+
+
+
+# Get the directory of the current Python script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Create a folder named 'plots' inside the script directory
+plots_dir = os.path.join(script_dir, 'images')
+os.makedirs(plots_dir, exist_ok=True)
+
+file_name = f'{instance_name}_uC{unit_cost}_iC{init_cost}_wC{wait_cost}' \
+            f'_dC{delay_cost}_iS{ind_size}_pS{pop_size}_cP{cx_pb}_mP{mut_pb}_nG{n_gen}.png'
+
+# Save the plot to the 'plots' folder
+plt.savefig(os.path.join(plots_dir, file_name))
+
 plt.show()
