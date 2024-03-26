@@ -57,8 +57,6 @@ for i in range(len(list_1)):
 for j in range(len(list_1)):
     for i in range(1, len(list_1[j])):
 
-
-
         number_i = list_1[j][i]
         number_i_1 = list_1[j][i - 1]
 
@@ -84,7 +82,7 @@ for j in range(len(list_1)):
         plt.arrow(x_point_1 , y_point_1, x_point_2 - x_point_1, y_point_2-y_point_1, head_width=1, head_length=1, color=color_vector[j], length_includes_head=True)
         plt.plot(x_point_1, y_point_1, ".", color=color_vector[j], markersize=10)
 
-plt.plot(data["depart"]['x'], data["depart"]['y'], "o", color="red", markersize=10)
+plt.plot(data["depart"]['coordinates']['x'], data["depart"]['coordinates']['y'], "o", color="red", markersize=10)
 
 plt.grid(True)
 plt.xlabel('X coordinate')
