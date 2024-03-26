@@ -241,10 +241,7 @@ def run_gavrptw(instance_name, unit_cost, init_cost, wait_cost, delay_cost, ind_
                 writer = DictWriter(file_object, fieldnames=fieldnames, dialect='excel')
                 writer.writeheader()
                 for csv_row in csv_data:
-                    writer.writerow(csv_row)
-                    
-    print(sub_route_list)
-
+                    writer.writerow(csv_row)            
     return  sub_route_list
 
 

@@ -19,9 +19,9 @@ delay_cost = 1.5
 
 ind_size = 25
 pop_size = 80
-cx_pb = 0.85
+cx_pb = 2.0
 mut_pb = 0.01
-n_gen = 100
+n_gen = 300
 
 export_csv = True
 
@@ -31,7 +31,7 @@ list_1 = run_gavrptw(instance_name=instance_name, unit_cost=unit_cost, init_cost
 
 
 # Load the data from the json file 
-json_folder = '.\data\json'
+json_folder = '.\\data\\json'
 file_path = json_folder + '\\' + instance_name + '.json'
 
 with open(file_path, 'r') as file:
@@ -42,7 +42,7 @@ customer = 'customer_'
 
 # part where it plots the routes
 
-cmap = plt.cm.get_cmap('tab10')
+cmap = plt.colormaps.get_cmap('tab10')
 
 # Generate list of 50 distinct and saturated colors in hexadecimal format
 color_vector = [cmap(i)[:3] for i in range(50)]
@@ -80,7 +80,7 @@ for j in range(len(list_1)):
         x_point_2 = data[customer_i]['coordinates']['x']
         y_point_1 = data[customer_i_1]['coordinates']['y']
         y_point_2 = data[customer_i]['coordinates']['y']
-        plt.arrow(x_point_1 , y_point_1, x_point_2 - x_point_1, y_point_2-y_point_1, head_width=1, head_length=1, color=color_vector[j], length_includes_head=True)
+        plt.arrow(x_point_1 , y_point_1, x_point_2 - x_point_1, y_point_2-y_point_1, head_width=1.5, head_length=1.5, color=color_vector[j], length_includes_head=True)
         plt.plot(x_point_1, y_point_1, ".", color=color_vector[j], markersize=10)
 
 plt.plot(data["depart"]['coordinates']['x'], data["depart"]['coordinates']['y'], "o", color="red", markersize=10)
@@ -106,3 +106,5 @@ file_name = f'{instance_name}_uC{unit_cost}_iC{init_cost}_wC{wait_cost}' \
 plt.savefig(os.path.join(plots_dir, file_name))
 
 plt.show()
+
+plt.close()
