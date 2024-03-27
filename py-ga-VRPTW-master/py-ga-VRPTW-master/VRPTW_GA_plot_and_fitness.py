@@ -148,7 +148,7 @@ def main(unit_cost, init_cost, wait_cost, delay_cost, ind_size, pop_size, cx_pb,
 import itertools
 
 # Example vectors
-unit_cost = [2.0, 4.0]
+'''unit_cost = [2.0, 4.0]
 init_cost = [20.0, 40.0]
 wait_cost = [0.5]
 delay_cost = [1.0]
@@ -157,6 +157,17 @@ ind_size = [25]
 pop_size = [80]
 cx_pb = [0.1, 10.0]
 mut_pb = [0.1, 10.0]
+n_gen = [300]'''
+
+unit_cost = [8.0]
+init_cost = [60.0]
+wait_cost = [0.5]
+delay_cost = [1.5]
+
+ind_size = [25]
+pop_size = [80]
+cx_pb = [10.0]
+mut_pb = [10.0]
 n_gen = [300]
 
 # Create a list to store combinations
