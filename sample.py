@@ -11,7 +11,7 @@ def main():
     instance_name = 'R25'
     ind_size = 25
 
-    unit_cost = 0
+    unit_cost = 1
     init_cost = 0
     wait_cost = 1
     delay_cost = 1
