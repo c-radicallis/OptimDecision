@@ -7,11 +7,15 @@ from gavrptw.core import run_gavrptw
 import matplotlib.pyplot as plt
 import json
 import os
+import pandas as pd
 
+# Set the random seed for reproducibility
 random.seed(64)
 
+# Set the instance name
 instance_name = 'R101'
 
+# Set the parameters for the genetic algorithm
 unit_cost = 8.0
 init_cost = 60.0
 wait_cost = 0.5
@@ -25,6 +29,7 @@ n_gen = 300
 
 export_csv = True
 
+# Run the genetic algorithm
 list_1 = run_gavrptw(instance_name=instance_name, unit_cost=unit_cost, init_cost=init_cost, \
     wait_cost=wait_cost, delay_cost=delay_cost, ind_size=ind_size, pop_size=pop_size, \
     cx_pb=cx_pb, mut_pb=mut_pb, n_gen=n_gen, export_csv=export_csv)
@@ -40,14 +45,13 @@ with open(file_path, 'r') as file:
 customer = 'customer_'
 
 
-# part where it plots the routes
-
+# Get a list of 50 distinct and saturated colors
 cmap = plt.colormaps.get_cmap('tab10')
 
 # Generate list of 50 distinct and saturated colors in hexadecimal format
 color_vector = [cmap(i)[:3] for i in range(50)]
 
-
+# Plot the solution
 plt.figure(figsize=[6, 6])
 plt.axis([0,70,0,70])
 plt.gca().set_aspect('equal')
@@ -88,9 +92,7 @@ plt.plot(data["depart"]['coordinates']['x'], data["depart"]['coordinates']['y'],
 plt.grid(True)
 plt.xlabel('X coordinate')
 plt.ylabel('Y coordinate')
-
-
-
+plt.title('VRPTW Solution for ' + instance_name)
 
 # Get the directory of the current Python script
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -99,12 +101,37 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 plots_dir = os.path.join(script_dir, 'images')
 os.makedirs(plots_dir, exist_ok=True)
 
-file_name = f'{instance_name}_uC{unit_cost}_iC{init_cost}_wC{wait_cost}' \
+file_path = f'{instance_name}_uC{unit_cost}_iC{init_cost}_wC{wait_cost}' \
             f'_dC{delay_cost}_iS{ind_size}_pS{pop_size}_cP{cx_pb}_mP{mut_pb}_nG{n_gen}.png'
 
 # Save the plot to the 'plots' folder
-plt.savefig(os.path.join(plots_dir, file_name))
+plt.savefig(os.path.join(plots_dir, file_path))
 
-plt.show()
 
-plt.close()
+## part where it plots the fitness
+
+# Check if the file exists
+file_path = file_path.replace('.png','.csv')
+csv_file_path = '.\\results\\' + file_path
+
+if os.path.exists(csv_file_path):
+    # Read CSV file
+    df = pd.read_csv(csv_file_path)
+    # Specify columns to plot
+    columns_to_plot = ['min_fitness','max_fitness','avg_fitness','std_fitness']  # Add more columns as needed
+else:
+    print(f"File {file_path} does not exist. Please check the file path and name.")
+
+
+plt.figure(figsize=[6, 6])
+df[columns_to_plot].plot()
+plt.xlabel('Generation')
+plt.legend(['Minimum Fitness', 'Maximum Fitness', 'Average Fitness', 'Standard Deviation Fitness'], loc='right')
+plt.grid(True)
+plt.xlim(0,max(df['generation']))
+plt.ylim(0)
+
+
+file_path = file_path.replace('.csv','.jpeg')
+
+plt.savefig(file_path)
