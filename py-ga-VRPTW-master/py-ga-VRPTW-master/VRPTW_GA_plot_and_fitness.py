@@ -16,20 +16,7 @@ random.seed(64)
 instance_name = 'R101'
 
 
-
 def main(unit_cost, init_cost, wait_cost, delay_cost, ind_size, pop_size, cx_pb, mut_pb, n_gen):
-        
-    # Set the parameters for the genetic algorithm
-    '''unit_cost = 8.0
-    init_cost = 60.0
-    wait_cost = 0.5
-    delay_cost = 1.5
-
-    ind_size = 25
-    pop_size = 80
-    cx_pb = 10.0
-    mut_pb = 10.0
-    n_gen = 300'''
 
     export_csv = True
 
@@ -159,15 +146,15 @@ cx_pb = [0.1, 10.0]
 mut_pb = [0.1, 10.0]
 n_gen = [300]'''
 
-unit_cost = [8.0]
-init_cost = [60.0]
-wait_cost = [0.5]
-delay_cost = [1.5]
+unit_cost = [1]
+init_cost = [1]
+wait_cost = [1]
+delay_cost = [1000000]
 
 ind_size = [25]
 pop_size = [80]
-cx_pb = [10.0]
-mut_pb = [10.0]
+cx_pb = [.75]
+mut_pb = [.20]
 n_gen = [300]
 
 # Create a list to store combinations
