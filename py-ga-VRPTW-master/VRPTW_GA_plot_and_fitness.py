@@ -14,7 +14,7 @@ import time
 random.seed(64)
 
 # Set the instance name
-instance_name = 'r101_25'
+instance_name = 'R101'
 
 
 
