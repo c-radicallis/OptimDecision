@@ -8,12 +8,13 @@ import matplotlib.pyplot as plt
 import json
 import os
 import pandas as pd
+import time
 
 # Set the random seed for reproducibility
 random.seed(64)
 
 # Set the instance name
-instance_name = 'R101'
+instance_name = 'r101_25'
 
 
 
@@ -34,9 +35,14 @@ def main(unit_cost, init_cost, wait_cost, delay_cost, ind_size, pop_size, cx_pb,
     export_csv = True
 
     # Run the genetic algorithm
+    start_time = time.time()
+
     list_1 = run_gavrptw(instance_name=instance_name, unit_cost=unit_cost, init_cost=init_cost, \
         wait_cost=wait_cost, delay_cost=delay_cost, ind_size=ind_size, pop_size=pop_size, \
         cx_pb=cx_pb, mut_pb=mut_pb, n_gen=n_gen, export_csv=export_csv)
+    
+    elapsed_time = time.time() - start_time
+
 
 
     # Load the data from the json file 
