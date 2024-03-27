@@ -12,9 +12,9 @@ def main():
     ind_size = 25
 
     unit_cost = 1
-    init_cost = 0
+    init_cost = 1
     wait_cost = 1
-    delay_cost = 1
+    delay_cost = 1e5
 
 
     pop_size = 400

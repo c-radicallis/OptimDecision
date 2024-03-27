@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 
-'''sample_R101.py'''
 
 import random
 from gavrptw.core import run_gavrptw
@@ -154,15 +152,15 @@ def main(unit_cost, init_cost, wait_cost, delay_cost, ind_size, pop_size, cx_pb,
 import itertools
 
 # Example vectors
-unit_cost = [2.0, 4.0]
-init_cost = [20.0, 40.0]
-wait_cost = [0.5]
-delay_cost = [1.0]
+unit_cost = [1]
+init_cost = [1]
+wait_cost = [1]
+delay_cost = [1]
 
 ind_size = [25]
 pop_size = [80]
-cx_pb = [0.1, 10.0]
-mut_pb = [0.1, 10.0]
+cx_pb = [0.75]
+mut_pb = [0.2]
 n_gen = [300]
 
 # Create a list to store combinations
