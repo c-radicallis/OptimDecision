@@ -11,10 +11,10 @@ def main():
     instance_name = 'R25'
     ind_size = 25
 
-    unit_cost = 8.0
-    init_cost = 100.0
-    wait_cost = 1.0
-    delay_cost = 1.5
+    unit_cost = 0
+    init_cost = 0
+    wait_cost = 1
+    delay_cost = 1
 
 
     pop_size = 400
