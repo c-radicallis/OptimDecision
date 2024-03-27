@@ -17,10 +17,10 @@ instance_name = 'R101'
 
 
 
-def main():
+def main(unit_cost, init_cost, wait_cost, delay_cost, ind_size, pop_size, cx_pb, mut_pb, n_gen):
         
     # Set the parameters for the genetic algorithm
-    unit_cost = 8.0
+    '''unit_cost = 8.0
     init_cost = 60.0
     wait_cost = 0.5
     delay_cost = 1.5
@@ -29,7 +29,7 @@ def main():
     pop_size = 80
     cx_pb = 10.0
     mut_pb = 10.0
-    n_gen = 300
+    n_gen = 300'''
 
     export_csv = True
 
@@ -141,3 +141,34 @@ def main():
     image_file_path = '.\\results\\' + file_path
 
     plt.savefig(image_file_path)
+
+
+
+
+import itertools
+
+# Example vectors
+unit_cost = [2.0, 4.0]
+init_cost = [20.0, 40.0]
+wait_cost = [0.5]
+delay_cost = [1.0]
+
+ind_size = [25]
+pop_size = [80]
+cx_pb = [0.1, 10.0]
+mut_pb = [0.1, 10.0]
+n_gen = [300]
+
+# Create a list to store combinations
+combinations = []
+
+
+for unit_cost, init_cost, wait_cost, delay_cost, ind_size, pop_size, cx_pb, mut_pb, n_gen in itertools.product(unit_cost, init_cost, wait_cost, delay_cost, ind_size, pop_size, cx_pb, mut_pb, n_gen):
+    combinations.append([unit_cost, init_cost, wait_cost, delay_cost, ind_size, pop_size, cx_pb, mut_pb, n_gen])
+
+print(combinations)
+
+# Run the main function for each combination
+for combination in combinations:
+    main(*combination)
+    print(f"Finished running for combination: {combination}")
