@@ -125,7 +125,7 @@ def text2json(customize=False):
                         'due_time': float(values[5]),
                         'service_time': float(values[6]),
                     }
-        customers = ['depart'] + [f'customer_{x}' for x in range(1, 26)]
+        customers = ['depart'] + [f'customer_{x}' for x in range(1, 4)]
         json_data['distance_matrix'] = [[calculate_distance(json_data[customer1], \
             json_data[customer2]) for customer1 in customers] for customer2 in customers]
         json_file_name = f"{json_data['instance_name']}.json"

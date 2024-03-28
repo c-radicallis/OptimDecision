@@ -1,0 +1,71 @@
+{
+    "customer_1": {
+        "coordinates": {
+            "x": 100.0,
+            "y": 0.0
+        },
+        "demand": 1.0,
+        "due_time": 99999.0,
+        "ready_time": 0.0,
+        "service_time": 10.0
+    },
+    "customer_2": {
+        "coordinates": {
+            "x": 100.0,
+            "y": 100.0
+        },
+        "demand": 1.0,
+        "due_time": 9999.0,
+        "ready_time": 10.0,
+        "service_time": 10.0
+    },
+    "customer_3": {
+        "coordinates": {
+            "x": 0.0,
+            "y": 100.0
+        },
+        "demand": 1.0,
+        "due_time": 99999.0,
+        "ready_time": 20.0,
+        "service_time": 10.0
+    },
+    "depart": {
+        "coordinates": {
+            "x": 0.0,
+            "y": 0.0
+        },
+        "demand": 0.0,
+        "due_time": 9999.0,
+        "ready_time": 0.0,
+        "service_time": 0.0
+    },
+    "distance_matrix": [
+        [
+            0.0,
+            100.0,
+            141.4213562373095,
+            100.0
+        ],
+        [
+            100.0,
+            0.0,
+            100.0,
+            141.4213562373095
+        ],
+        [
+            141.4213562373095,
+            100.0,
+            0.0,
+            100.0
+        ],
+        [
+            100.0,
+            141.4213562373095,
+            100.0,
+            0.0
+        ]
+    ],
+    "instance_name": "R3",
+    "max_vehicle_number": 25,
+    "vehicle_capacity": 200.0
+}
