@@ -74,7 +74,6 @@ def eval_vrptw(individual, instance):
     route = ind2route(individual, instance)
     total_cost = 0
     for sub_route in route:
-        sub_route_time_cost = 0
         elapsed_time = 0
         last_customer_id = 0
         for customer_id in sub_route:
@@ -91,6 +90,7 @@ def eval_vrptw(individual, instance):
             # Update last customer ID
             last_customer_id = customer_id
 
+        travel_time = instance['distance_matrix'][last_customer_id][customer_id]        
         # Update total cost
         total_cost = total_cost + elapsed_time
     fitness = 1.0 / total_cost
